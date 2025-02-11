@@ -7,7 +7,11 @@ const ProductList = () => {
     return <Product key={product.id} product={product} />;
   });
 
-  return <ul>{productsList}</ul>;
+  return (
+    <Card>
+      <ul>{productsList}</ul>
+    </Card>
+  );
 };
 
 export default ProductList;
