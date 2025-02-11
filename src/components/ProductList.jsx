@@ -4,7 +4,7 @@ import { products } from "../data/data";
 
 const ProductList = () => {
   const productsList = products.map((product) => {
-    return <Product title={product.title} price={product.price} />;
+    return <Product key={product.id} product={product} />;
   });
 
   return <ul>{productsList}</ul>;
