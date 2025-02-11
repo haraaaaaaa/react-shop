@@ -1,6 +1,7 @@
 import React from "react";
 import { Product } from "./Product";
 import { products } from "../data/data";
+import Card from "../shared/UIElements/Card";
 
 const ProductList = () => {
   const productsList = products.map((product) => {
@@ -8,7 +9,7 @@ const ProductList = () => {
   });
 
   return (
-    <Card>
+    <Card className={`max-w`}>
       <ul>{productsList}</ul>
     </Card>
   );
