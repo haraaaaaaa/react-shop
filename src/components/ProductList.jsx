@@ -1,11 +1,6 @@
 import React, { useState, useReducer, useEffect } from "react";
 import axios from "axios";
-//import { Product } from "./Product";
-//import { products } from "../data/data";
-import Card from "../shared/UIElements/Card";
-import Button from "../shared/UIElements/Button";
 import { Product } from "./Product";
-import { getProducts } from "../services/api/product-services";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

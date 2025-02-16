@@ -27,10 +27,10 @@ export const Product = ({ title, price, category, imageUrl }) => {
   console.log(product); //
 */
   return (
-    <Card className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-3">
+    <Card className=" bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-3">
       <li>
-        <h1 className="text-base font-medium h-12 line-clamp-2">{title}</h1>
-        <h2 className="bg-gray-200 text-gray-700 text-xs font-medium px-3 py-1 rounded-full uppercase tracking-wide mt-2 mb-2">{category}</h2>
+        <h1 className="mt-1 text-base font-medium h-12 line-clamp-2">{title}</h1>
+        <h2 className="bg-gray-200 text-gray-700 text-xs font-medium px-3 py-1 rounded-full uppercase tracking-wide mt-1 mb-1">{category}</h2>
         <h3 className="text-lg font-bold text-indigo-600">${price}</h3>
         <img src={imageUrl} className="w-full rounded-xl mt-4" />
 
