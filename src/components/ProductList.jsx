@@ -3,6 +3,8 @@ import axios from "axios";
 //import { Product } from "./Product";
 //import { products } from "../data/data";
 import Card from "../shared/UIElements/Card";
+import Button from "../shared/UIElements/Button";
+import { Product } from "./Product";
 import { getProducts } from "../services/api/product-services";
 
 const ProductList = () => {
@@ -23,11 +25,14 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-  console.log(products); // 2x output in console
+  const productsList = products.map((product) => {
+    return <Product key={product.id} title={product.title} price={product.price} category={product.category.name} imageUrl={product.images[0]} />;
+  });
+
   return (
-    <Card className={`max-w`}>
-      <ul>test</ul>
-    </Card>
+    <div>
+      <ul>{productsList}</ul>
+    </div>
   );
 };
 
