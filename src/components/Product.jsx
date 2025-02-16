@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../shared/UIElements/Button";
 import Card from "../shared/UIElements/Card";
+import { useReducer } from "react";
+
+const productReducer = (state, action) => {};
 
 export const Product = ({ product }) => {
   return (

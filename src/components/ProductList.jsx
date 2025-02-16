@@ -1,16 +1,22 @@
-import React from "react";
-import { Product } from "./Product";
-import { products } from "../data/data";
+import React, { useState, useReducer } from "react";
+//import { Product } from "./Product";
+//import { products } from "../data/data";
 import Card from "../shared/UIElements/Card";
+import { getProducts } from "../services/api/product-services";
 
 const ProductList = () => {
-  const productsList = products.map((product) => {
-    return <Product key={product.id} product={product} />;
-  });
+  const [products, setProducts] = useState([]);
 
+  // getProducts()
+  //   .then((data) => {
+  //     setProducts(data);
+  //   })
+  //   .catch(console.error.bind(console));
+
+  //console.log(products);
   return (
     <Card className={`max-w`}>
-      <ul>{productsList}</ul>
+      <ul>test</ul>
     </Card>
   );
 };
