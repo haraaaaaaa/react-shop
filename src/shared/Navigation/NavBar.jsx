@@ -4,17 +4,18 @@ import NavLinks from "./NavLinks";
 
 const NavBar = () => {
   return (
-    <nav className="bg-indigo-600 text-white p-4 shadow-md">
+    <nav className="bg-white shadow-md p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">
-          <NavLink to="/" className="font-semibold flex items-center">
+        <div className="text-2xl font-bold text-indigo-600">
+          <NavLink
+            to="/"
+            className="font-semibold hover:text-indigo-800 transition"
+          >
             ReactShop
           </NavLink>
         </div>
 
-        <div className="hover:text-indigo-200">
-          <NavLinks />
-        </div>
+        <NavLinks />
       </div>
     </nav>
   );
