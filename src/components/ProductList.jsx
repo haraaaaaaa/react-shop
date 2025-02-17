@@ -1,32 +1,38 @@
-import React, { useState, useReducer, useEffect } from "react";
-import axios from "axios";
-import { Product } from "./Product";
+import React, { useState, useEffect } from "react";
+import useRequest from "../hooks/useRequest";
+import { ProductCard } from "./ProductCard";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+
+  const { sendRequest } = useRequest({
+    url: "https://fakestoreapi.com/products",
+    method: "get",
+    onSuccess: (data) => [setProducts(data)],
+  });
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("https://api.escuelajs.co/api/v1/products");
-        const productsData = response.data;
-        setProducts(productsData);
-      } catch (error) {
-        setError("Error while fetching data");
-      }
-    };
-
-    fetchProducts();
-  }, []);
+    sendRequest();
+  }, [sendRequest]);
 
   const productsList = products.map((product) => {
-    return <Product key={product.id} title={product.title} price={product.price} category={product.category.name} imageUrl={product.images[0]} />;
+    return (
+      <ProductCard
+        key={product.id}
+        id={product.id}
+        title={product.title}
+        price={product.price}
+        category={product.category}
+        imageUrl={product.image}
+      />
+    );
   });
 
   return (
     <div>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4 p-4">{productsList}</ul>
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+        {productsList}
+      </ul>
     </div>
   );
 };
