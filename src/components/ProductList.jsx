@@ -30,7 +30,7 @@ const ProductList = () => {
         key={product.id}
         title={product.title}
         price={product.price}
-        category={product.category.name}
+        category={product.category}
         imageUrl={product.image}
       />
     );
