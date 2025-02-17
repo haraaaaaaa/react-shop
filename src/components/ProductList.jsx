@@ -1,6 +1,6 @@
-import React, { useState, useReducer, useEffect } from "react";
-import { ProductCard } from "./ProductCard";
+import React, { useState, useEffect } from "react";
 import useRequest from "../hooks/useRequest";
+import { ProductCard } from "./ProductCard";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -8,17 +8,12 @@ const ProductList = () => {
   const { sendRequest } = useRequest({
     url: "https://fakestoreapi.com/products",
     method: "get",
-    onSuccess: (data) => {
-      setProducts((prevProducts) =>
-        prevProducts.length === 0 ? data : prevProducts
-      );
-    },
+    onSuccess: (data) => [setProducts(data)],
   });
 
   useEffect(() => {
     sendRequest();
-  }, []);
-  console.log(products);
+  }, [sendRequest]);
 
   const productsList = products.map((product) => {
     return (
@@ -35,7 +30,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4 p-4">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
         {productsList}
       </ul>
     </div>

@@ -17,16 +17,12 @@ const ProductDetails = () => {
     sendRequest();
   }, [params.id]);
 
-  const onGoBack = () => {
-    console.log("Go back");
-  };
   const onAddToCart = () => {
     console.log("Add to cart");
   };
 
   return (
     <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-6">
-      {/* Product Image */}
       <div className="w-full h-[300px] border-2 border-gray-300 shadow-xl rounded-lg flex items-center justify-center">
         <img
           src={product.image}
@@ -34,7 +30,6 @@ const ProductDetails = () => {
         />
       </div>
 
-      {/* Product Info */}
       <div className="mt-4 text-center">
         <h2 className="text-2xl font-bold text-gray-800">{product.title}</h2>
         <p className="text-gray-500 text-sm mt-1">{product.category}</p>
@@ -44,7 +39,6 @@ const ProductDetails = () => {
         <p className="text-gray-700 text-md mt-4">{product.description}</p>
       </div>
 
-      {/* Buttons */}
       <div className="mt-6 flex justify-between">
         <Link to={"/products"}>
           <Button className="bg-gray-300 text-gray-800 text-sm px-4 py-2 rounded-lg hover:bg-gray-400 transition">
@@ -52,12 +46,12 @@ const ProductDetails = () => {
           </Button>
         </Link>
 
-        <button
+        <Button
           onClick={onAddToCart}
           className="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition"
         >
-          Add to Cart
-        </button>
+          Add To Cart
+        </Button>
       </div>
     </div>
   );
