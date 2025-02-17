@@ -8,18 +8,23 @@ const ProductList = () => {
   const { sendRequest } = useRequest({
     url: "https://fakestoreapi.com/products",
     method: "get",
-    onSuccess: (data) => [setProducts(data)],
+    onSuccess: (data) => {
+      setProducts((prevProducts) =>
+        prevProducts.length === 0 ? data : prevProducts
+      );
+    },
   });
 
   useEffect(() => {
     sendRequest();
-  }, [sendRequest]);
+  }, []);
   console.log(products);
 
   const productsList = products.map((product) => {
     return (
       <ProductCard
         key={product.id}
+        id={product.id}
         title={product.title}
         price={product.price}
         category={product.category}
