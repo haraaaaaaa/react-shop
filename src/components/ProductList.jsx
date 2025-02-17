@@ -1,27 +1,19 @@
 import React, { useState, useReducer, useEffect } from "react";
-import axios from "axios";
 import { ProductCard } from "./ProductCard";
+import useRequest from "../hooks/useRequest";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+
+  const { sendRequest } = useRequest({
+    url: "https://fakestoreapi.com/products",
+    method: "get",
+    onSuccess: (data) => [setProducts(data)],
+  });
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(
-          // "https://api.escuelajs.co/api/v1/products" imageUrl={product.images[0]}
-          "https://fakestoreapi.com/products"
-        );
-        const productsData = response.data;
-        setProducts(productsData);
-      } catch (error) {
-        setError("Error while fetching data");
-      }
-    };
-
-    fetchProducts();
-  }, []);
+    sendRequest();
+  }, [sendRequest]);
   console.log(products);
 
   const productsList = products.map((product) => {
