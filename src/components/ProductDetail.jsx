@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import useRequest from "../hooks/useRequest";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 import Button from "../shared/UIElements/Button";
 
 const ProductDetails = () => {
   const params = useParams();
   const [product, setProduct] = useState({});
+  const { addToCart } = useCart();
 
   const { sendRequest } = useRequest({
     url: `https://fakestoreapi.com/products/${params.id}`,
@@ -17,6 +18,10 @@ const ProductDetails = () => {
   useEffect(() => {
     sendRequest();
   }, [params.id]);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
 
   return (
     <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-6">
@@ -44,7 +49,7 @@ const ProductDetails = () => {
         </Link>
 
         <Button
-          onClick={() => addToCart(product)}
+          onClick={handleAddToCart}
           className="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition"
         >
           Add To Cart
