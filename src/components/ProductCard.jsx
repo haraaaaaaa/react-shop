@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Button from "../shared/UIElements/Button";
 import Card from "../shared/UIElements/Card";
+import { useCart } from "../context/cartContext";
 
 export const ProductCard = ({ id, title, price, category, imageUrl }) => {
   return (
@@ -38,7 +39,10 @@ export const ProductCard = ({ id, title, price, category, imageUrl }) => {
               Details
             </Button>
           </Link>
-          <Button className="w-1/2 h-10 md:h-12 bg-indigo-600 text-white text-xs md:text-sm rounded-lg hover:bg-indigo-700 transition">
+          <Button
+            className="w-1/2 h-10 md:h-12 bg-indigo-600 text-white text-xs md:text-sm rounded-lg hover:bg-indigo-700 transition"
+            onClick={() => addToCart(product)}
+          >
             Add to Cart
           </Button>
         </div>

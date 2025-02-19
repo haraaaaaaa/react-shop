@@ -9,10 +9,12 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
+    console.log("Added to cart ", product.id);
   };
 
   const removeFromCart = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    console.log("Removed from cart ", id);
   };
 
   const clearCart = () => {
