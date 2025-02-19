@@ -4,7 +4,7 @@ import NavBar from "./shared/Navigation/NavBar";
 import ProductList from "./components/ProductList";
 import ProductDetail from "./components/ProductDetail";
 import Home from "./pages/Home";
-import { CartProvider } from "./context/cartContext";
+import { CartProvider } from "../context/CartContext";
 
 function App() {
   return (

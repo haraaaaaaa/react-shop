@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import Button from "../shared/UIElements/Button";
 import Card from "../shared/UIElements/Card";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 export const ProductCard = ({ id, title, price, category, imageUrl }) => {
   return (

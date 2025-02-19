@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import useRequest from "../hooks/useRequest";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import Button from "../shared/UIElements/Button";
 
 const ProductDetails = () => {
