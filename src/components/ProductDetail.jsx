@@ -35,12 +35,12 @@ const ProductDetails = () => {
         <p className="text-gray-700 text-md mt-4">{product.description}</p>
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <Link to={"/products"}>
-          <button className="bg-gray-300 text-gray-800 text-sm px-4 py-2 rounded-lg hover:bg-gray-400 transition">Go Back</button>
+      <div className="mt-6 flex justify-between gap-4">
+        <Link to={"/products"} className="w-full">
+          <button className="w-full bg-gray-300 text-gray-800 text-sm px-4 py-2 rounded-lg hover:bg-gray-400 transition">Go Back</button>
         </Link>
 
-        <button onClick={handleAddToCart} className="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition">
+        <button onClick={handleAddToCart} className="w-full bg-indigo-600 text-white text-sm px-4 py-2 rounded-md hover:bg-indigo-700 transition">
           Add To Cart
         </button>
       </div>
