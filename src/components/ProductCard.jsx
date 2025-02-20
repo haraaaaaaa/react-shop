@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import Button from "../shared/UIElements/Button";
 import Card from "../shared/UIElements/Card";
 
@@ -25,17 +25,11 @@ export const ProductCard = ({ product }) => {
           {product.category}
         </h2>
 
-        <h3 className="text-lg md:text-xl font-bold text-indigo-600 mt-1">
-          ${product.price}
-        </h3>
+        <h3 className="text-lg md:text-xl font-bold text-indigo-600 mt-1">${product.price}</h3>
 
         <div className="flex items-center justify-center w-full my-2">
           <div className="w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] border-2 border-gray-300 shadow-xl rounded-lg flex items-center justify-center overflow-hidden">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-full object-contain p-2"
-            />
+            <img src={product.image} alt={product.title} className="w-full h-full object-contain p-2" />
           </div>
         </div>
 
