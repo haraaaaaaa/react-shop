@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import NavBar from "./shared/Navigation/NavBar";
-import ProductList from "./components/ProductList";
-import ProductDetail from "./components/ProductDetail";
 import { CartProvider } from "./context/CartContext";
-import Cart from "./components/Cart";
+
+import ProductDetailPage from "./pages/ProductDetailPage";
+import ProductListPage from "./pages/ProductListPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -12,10 +13,10 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<ProductList />} />
-          <Route exact path="/products" element={<ProductList />} />
-          <Route exact path="/products/:id" element={<ProductDetail />} />
-          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/" element={<ProductListPage />} />
+          <Route exact path="/products" element={<ProductListPage />} />
+          <Route exact path="/products/:id" element={<ProductDetailPage />} />
+          <Route exact path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
     </CartProvider>
