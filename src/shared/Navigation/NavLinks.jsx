@@ -18,7 +18,7 @@ const NavLinks = () => {
           <NavLink
             to={href}
             className={({ isActive }) =>
-              `py-2 px-4 rounded-md transition-all duration-200 ${
+              `py-2 px-4 rounded-md transition-all duration-200 flex items-center ${
                 isActive ? "text-indigo-600 bg-white shadow-md" : "text-gray-700 hover:text-indigo-400"
               }`
             }
