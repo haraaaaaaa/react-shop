@@ -1,43 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router";
+import React from "react";
+import { NavLink } from "react-router";
 
 const NavLinks = () => {
-  const [activeLink, setActiveLink] = useState("/");
-  const location = useLocation();
-
-  useEffect(() => {
-    setActiveLink(location.pathname);
-  }, [location.pathname]);
-
-  const handleNavLinkClick = () => {
-    setActiveLink("/"); // Optional: Resets active link when clicked
-  };
-
   const links = [
-    {
-      label: "Shop",
-      href: "/products",
-    },
-    {
-      label: "My Cart",
-      href: "/cart",
-    },
-  ]
-    .filter((link) => link)
-    .map(({ label, href }) => (
-      <NavLink
-        to={href}
-        key={href}
-        className={({ isActive }) =>
-          `${isActive ? "text-indigo-600 bg-white shadow-md" : "text-white hover:text-indigo-200"} py-2 px-4 rounded-md transition-all duration-200`
-        }
-        onClick={handleNavLinkClick}
-      >
-        <li className="cursor-pointer">{label}</li>
-      </NavLink>
-    ));
+    { label: "Shop", href: "/products" },
+    { label: "My Cart", href: "/cart" },
+  ];
 
-  return <ul className="flex space-x-6">{links}</ul>;
+  return (
+    <ul className="flex space-x-6 font-medium">
+      {links.map(({ label, href }) => (
+        <li key={href}>
+          <NavLink
+            to={href}
+            className={({ isActive }) =>
+              `py-2 px-4 rounded-md transition-all duration-200 ${
+                isActive
+                  ? "text-indigo-600 bg-white shadow-md"
+                  : "text-gray-700 hover:text-indigo-400"
+              }`
+            }
+          >
+            {label}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default NavLinks;

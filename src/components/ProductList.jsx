@@ -16,16 +16,7 @@ const ProductList = () => {
   }, [sendRequest]);
 
   const productsList = products.map((product) => {
-    return (
-      <ProductCard
-        key={product.id}
-        id={product.id}
-        title={product.title}
-        price={product.price}
-        category={product.category}
-        imageUrl={product.image}
-      />
-    );
+    return <ProductCard key={product.id} product={product} />;
   });
 
   return (
