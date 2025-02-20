@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { useCart } from "../context/cartContext";
-import Button from "../shared/UIElements/Button";
+import { useCart } from "../context/CartContext";
 import Card from "../shared/UIElements/Card";
 
 export const ProductCard = ({ product }) => {
@@ -25,32 +24,26 @@ export const ProductCard = ({ product }) => {
           {product.category}
         </h2>
 
-        <h3 className="text-lg md:text-xl font-bold text-indigo-600 mt-1">
-          ${product.price}
-        </h3>
+        <h3 className="text-lg md:text-xl font-bold text-indigo-600 mt-1">${product.price}</h3>
 
         <div className="flex items-center justify-center w-full my-2">
           <div className="w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] border-2 border-gray-300 shadow-xl rounded-lg flex items-center justify-center overflow-hidden">
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-full object-contain p-2"
-            />
+            <img src={product.image} alt={product.title} className="w-full h-full object-contain p-2" />
           </div>
         </div>
 
         <div className="flex w-full justify-between mt-3 px-2 gap-2">
           <Link to={`/products/${product.id}`} className="w-1/2">
-            <Button className="w-full h-10 md:h-12 bg-gray-300 text-gray-800 text-xs md:text-sm rounded-lg hover:bg-gray-400 transition">
+            <button className="w-full h-10 md:h-12 bg-gray-300 text-gray-800 text-xs md:text-sm rounded-lg hover:bg-gray-400 transition">
               Details
-            </Button>
+            </button>
           </Link>
-          <Button
+          <button
             className="w-1/2 h-10 md:h-12 bg-indigo-600 text-white text-xs md:text-sm rounded-lg hover:bg-indigo-700 transition"
             onClick={handleAddToCart}
           >
             Add to Cart
-          </Button>
+          </button>
         </div>
       </li>
     </Card>

@@ -20,10 +20,11 @@ const ProductList = () => {
   });
 
   return (
-    <div>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
-        {productsList}
-      </ul>
+    <div className=" py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Our Products</h2>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">{productsList}</ul>
+      </div>
     </div>
   );
 };
