@@ -52,7 +52,7 @@ const HomePage = () => {
 
       <footer className="bg-gray-800 text-white py-6">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; 2025 SAAI Solutions. All rights reserved.</p>
+          <p>&copy; 2025 SAAI Solutions</p>
         </div>
       </footer>
     </div>
