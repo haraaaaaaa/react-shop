@@ -1,43 +1,79 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useReducer, useState, useContext, createContext } from "react";
 
 export const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
+const cartReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD": {
+      const existingProduct = state.find(
+        (item) => item.id === action.payload.id
+      );
 
       if (existingProduct) {
-        return prevCart.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+        return state.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
       }
 
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
-  };
+      return [...state, { ...action.payload, quantity: 1 }];
+    }
 
-  const removeFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-  };
+    case "REMOVE":
+      return state.filter((item) => item.id !== action.payload);
 
-  const clearCart = () => {
-    setCart([]);
-  };
+    case "CLEAR":
+      return [];
 
-  const increaseQuantity = (id) => {
-    setCart((prevCart) => prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)));
-  };
+    case "INCREASE_QUANTITY":
+      return state.map((item) =>
+        item.id === action.payload
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
 
-  const decreaseQuantity = (id) => {
-    setCart((prevCart) =>
-      prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item)).filter((item) => item.quantity > 0)
-    );
-  };
+    case "DECREASE_QUANTITY":
+      return state
+        .map((item) =>
+          item.id === action.payload
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0);
+
+    default:
+      return state;
+  }
+};
+
+export const CartProvider = ({ children }) => {
+  // const [cart, setCart] = useState([]);
+  const [cart, cartDispatch] = useReducer(cartReducer, []);
+
+  const addToCart = (product) =>
+    cartDispatch({ type: "ADD", payload: product });
+  const removeFromCart = (id) => cartDispatch({ type: "REMOVE", payload: id });
+  const clearCart = () => cartDispatch({ type: "CLEAR" });
+  const increaseQuantity = (id) =>
+    cartDispatch({ type: "INCREASE_QUANTITY", payload: id });
+  const decreaseQuantity = (id) =>
+    cartDispatch({ type: "DECREASE_QUANTITY", payload: id });
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity }}>{children}</CartContext.Provider>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
   );
 };
