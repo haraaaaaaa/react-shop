@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from "react";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
@@ -20,14 +20,24 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setCart(
-      (prevCart) => prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item)).filter((item) => item.quantity > 0) // Remove only when quantity reaches 0
-    );
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
   const clearCart = () => {
     setCart([]);
   };
 
-  return <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>{children}</CartContext.Provider>;
+  const increaseQuantity = (id) => {
+    setCart((prevCart) => prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity + 1 } : item)));
+  };
+
+  const decreaseQuantity = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((item) => (item.id === id ? { ...item, quantity: item.quantity - 1 } : item)).filter((item) => item.quantity > 0)
+    );
+  };
+
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity }}>{children}</CartContext.Provider>
+  );
 };

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import useRequest from "../hooks/useRequest";
 import { useCart } from "../context/CartContext";
-import Button from "../shared/UIElements/Button";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -24,7 +23,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-6">
+    <div className="max-w-xl mx-auto bg-white shadow-lg rounded-lg p-6 mt-12">
       <div className="w-full h-[300px] border-2 border-gray-300 shadow-xl rounded-lg flex items-center justify-center">
         <img src={product.image} className="w-[280px] h-[280px] object-contain rounded-lg" />
       </div>
@@ -38,12 +37,12 @@ const ProductDetails = () => {
 
       <div className="mt-6 flex justify-between">
         <Link to={"/products"}>
-          <Button className="bg-gray-300 text-gray-800 text-sm px-4 py-2 rounded-lg hover:bg-gray-400 transition">Go Back</Button>
+          <button className="bg-gray-300 text-gray-800 text-sm px-4 py-2 rounded-lg hover:bg-gray-400 transition">Go Back</button>
         </Link>
 
-        <Button onClick={handleAddToCart} className="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition">
+        <button onClick={handleAddToCart} className="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition">
           Add To Cart
-        </Button>
+        </button>
       </div>
     </div>
   );
