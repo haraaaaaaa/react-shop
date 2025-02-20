@@ -7,10 +7,7 @@ const NavBar = () => {
     <nav className="bg-white shadow-md p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold text-indigo-600">
-          <NavLink
-            to="/products"
-            className="font-semibold hover:text-indigo-800 transition"
-          >
+          <NavLink to="/" className="font-semibold hover:text-indigo-800 transition">
             ReactShop
           </NavLink>
         </div>
